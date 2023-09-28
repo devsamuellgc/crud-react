@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import Table from "../../components/Table";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -22,11 +22,7 @@ export default function Home() {
   return (
     <>
       <h1>Página inicial</h1>
-      <div>
-        {products.map((product) => {
-          return <p key={product.id}>{product.title}</p>;
-        })}
-      </div>
+      <Table products={products} />
     </>
   );
 }

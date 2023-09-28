@@ -1,4 +1,4 @@
-export default function Table() {
+export default function Table({ products }) {
   return (
     <div>
       <table>
@@ -12,7 +12,20 @@ export default function Table() {
             <th>Avaliação</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {products.map((product) => {
+            return (
+              <tr key={product.id}>
+                <td>{product.id}</td>
+                <td>{product.image}</td>
+                <td>{product.title}</td>
+                <td>{product.category}</td>
+                <td>{product.price}</td>
+                <td>{product.rating.rate}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
   );
