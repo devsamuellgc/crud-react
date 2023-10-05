@@ -1,20 +1,10 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
-import Table from "../../components/Table";
+import axios from "axios";
 import Header from "../../components/Header";
+import { Outlet } from "react-router-dom";
 
 export default function Home() {
-  const [products, setProducts] = useState([]);
   const [userName, setUserName] = useState("");
-
-  async function getAllProducts() {
-    const response = await axios.get(
-      "https://fakestoreapi.com/products?limit=5"
-    );
-    if (response.data) {
-      setProducts(response.data);
-    }
-  }
 
   async function getUserName() {
     const response = await axios.get("https://fakestoreapi.com/users/1");
@@ -26,15 +16,14 @@ export default function Home() {
   }
 
   useEffect(() => {
-    getAllProducts();
     getUserName();
   }, []);
 
   return (
     <>
       <Header userName={userName} />
-      <main className="bg-gray-50 px-20 py-8">
-        <Table products={products} />
+      <main className="bg-gray-50 px-20 py-8 min-h-screen">
+        <Outlet />
       </main>
     </>
   );

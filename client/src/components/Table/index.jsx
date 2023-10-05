@@ -1,4 +1,4 @@
-export default function Table({ products }) {
+export default function Table({ products, handleLimit }) {
   return (
     <div className="px-12 py-5 border rounded-md bg-white shadow">
       <table>
@@ -38,6 +38,14 @@ export default function Table({ products }) {
           })}
         </tbody>
       </table>
+      <div className="flex w-full items-center justify-end">
+        <select onChange={(e) => handleLimit(e.target.value)}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
     </div>
   );
 }
