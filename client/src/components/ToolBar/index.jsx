@@ -1,3 +1,5 @@
+import DialogModal from "../Modal";
+
 export default function ToolBar({ handleSort, handleSearch }) {
   return (
     <div className="mb-8 flex justify-between items-center py-5 px-3 border rounded-md bg-white shadow">
@@ -16,6 +18,9 @@ export default function ToolBar({ handleSort, handleSearch }) {
           <option value="asc">ASC</option>
           <option value="desc">DESC</option>
         </select>
+        <DialogModal titulo={"Adicionar"}>
+          <h1>Teste</h1>
+        </DialogModal>
       </div>
     </div>
   );

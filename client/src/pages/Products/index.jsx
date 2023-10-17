@@ -10,10 +10,18 @@ export default function Products() {
   const [sort, setSort] = useState("asc");
   const [search, setSearch] = useState("");
 
-  const { list } = useProducts();
+  const { list, remove } = useProducts();
 
   async function getAllProducts() {
     setProducts(await list(limit, sort));
+  }
+
+  async function removeProduct(id) {
+    const removedProduct = await remove(id);
+    const newArray = products.filter(
+      (product) => product.id != removedProduct.id
+    );
+    setProducts(newArray);
   }
 
   function handleLimit(value) {
@@ -56,6 +64,7 @@ export default function Products() {
       <Table
         products={search ? filteredProducts : products}
         handleLimit={handleLimit}
+        deleteFunction={removeProduct}
       />
     </>
   );
