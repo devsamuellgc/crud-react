@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { Button, Modal } from "antd";
 
-export default function DialogModal({ titulo, children, header }) {
+export default function DialogModal({
+  titulo,
+  children,
+  header,
+  handleConfirm,
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
   const handleOk = () => {
+    handleConfirm();
     setIsModalOpen(false);
   };
   const handleCancel = () => {

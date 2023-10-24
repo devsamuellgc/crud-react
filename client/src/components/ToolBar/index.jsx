@@ -1,6 +1,19 @@
+import { useEffect, useState } from "react";
 import DialogModal from "../Modal";
+import ProductForm from "../forms/Products";
 
 export default function ToolBar({ handleSort, handleSearch }) {
+  const [newProduct, setNewProduct] = useState({
+    title: "",
+    description: "",
+    price: 0,
+    category: "",
+  });
+
+  function handleSubmit() {
+    console.log(newProduct);
+  }
+
   return (
     <div className="mb-8 flex justify-between items-center py-5 px-3 border rounded-md bg-white shadow">
       <h2 className="uppercase text-2xl font-bold">Produtos</h2>
@@ -18,8 +31,12 @@ export default function ToolBar({ handleSort, handleSearch }) {
           <option value="asc">ASC</option>
           <option value="desc">DESC</option>
         </select>
-        <DialogModal header="Novo Produto" titulo={"Adicionar"}>
-          <h1>Teste</h1>
+        <DialogModal
+          handleConfirm={handleSubmit}
+          header="Novo Produto"
+          titulo="Adicionar"
+        >
+          <ProductForm newProduct={newProduct} setNewProduct={setNewProduct} />
         </DialogModal>
       </div>
     </div>

@@ -17,5 +17,14 @@ export function useProducts() {
     return response.data;
   }
 
-  return { list, remove };
+  async function create(body) {
+    const response = await axios.post("https://fakestoreapi.com/products", {
+      ...body,
+      image: "https://i.pravatar.cc",
+    });
+
+    return response.data;
+  }
+
+  return { list, remove, create };
 }
