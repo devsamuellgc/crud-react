@@ -18,7 +18,7 @@ export default function ToolBar({ handleSort, handleSearch }) {
           <option value="asc">ASC</option>
           <option value="desc">DESC</option>
         </select>
-        <DialogModal titulo={"Adicionar"}>
+        <DialogModal header="Novo Produto" titulo={"Adicionar"}>
           <h1>Teste</h1>
         </DialogModal>
       </div>
