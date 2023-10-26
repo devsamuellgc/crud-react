@@ -48,6 +48,7 @@ export default function Products() {
 
   useEffect(() => {
     getAllProducts();
+    console.log(products);
   }, []);
 
   useEffect(() => {
@@ -60,7 +61,11 @@ export default function Products() {
 
   return (
     <>
-      <ToolBar handleSort={handleSort} handleSearch={handleSearch} />
+      <ToolBar
+        handleSort={handleSort}
+        handleSearch={handleSearch}
+        handleProducts={setProducts}
+      />
       <Table
         products={search ? filteredProducts : products}
         handleLimit={handleLimit}
